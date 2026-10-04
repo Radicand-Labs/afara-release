@@ -1,4 +1,7 @@
-# Publishes docs/ to GitHub Pages whenever it changes on main.
+# Publishes docs/ to GitHub Pages on every push to main.
+#
+# No paths filter: path filters can skip the push that creates a branch, and
+# pushes here are rare enough that rebuilding every time is cheap.
 #
 # One-time setup: in the repository's Settings → Pages, set Source to
 # "GitHub Actions". The site is then at
@@ -8,9 +11,6 @@ name: Docs
 on:
   push:
     branches: [main]
-    paths:
-      - "docs/**"
-      - ".github/workflows/docs.yml"
   workflow_dispatch:
 
 permissions:
