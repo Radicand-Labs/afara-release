@@ -1,0 +1,7 @@
+# GitHub Pages (Jekyll) settings for the documentation site.
+#
+# GitHub Pages' default plugins do the rest: docs/README.md becomes the home
+# page, and links between the .md files are rewritten to the built pages.
+title: Afara CLI
+description: Every command and feature of the Afara CLI, and how to use them.
+theme: jekyll-theme-primer
