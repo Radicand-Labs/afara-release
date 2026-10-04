@@ -1,0 +1,14 @@
+# Local configuration. Never commit: .env is per-developer, and secrets
+# occasionally end up in it.
+.env
+.env.local
+
+# Build output
+/bin/
+
+apiKey.txt
+
+.vscode
+afara
+# GoReleaser output (make release-snapshot)
+/dist/
