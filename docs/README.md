@@ -10,12 +10,14 @@ This documentation covers every command in the `afara` CLI: what it does, the op
 | --- | --- |
 | [`afara`](shell.md) | Open the interactive shell: ask questions, and run any command as a slash command. |
 | [`afara auth login`](auth-login.md) | Sign in through your browser. |
-| [`afara model`](model.md) | Choose the AI model the Afara backend uses for you. |
+| [`afara model`](model.md) | Choose the AI tool `generate` and `compare` run, or the backend's AI model. |
 | [`afara init`](init.md) | Set a repository up: install the pre-push hook and set the baseline. |
 | [`afara generate`](generate.md) | Build a feature's code wireframe from your new commits, on your machine. |
 | [`afara link`](link.md) | Attach the Jira, Linear or GitHub ticket that describes a feature. |
 | [`afara push`](push.md) | Publish a generated wireframe to the dashboard. |
 | [`afara compare`](compare.md) | Find where the ticket and the build disagree. |
+| [`afara patterns`](patterns.md) | List your company's architecture patterns and the repositories they apply to. |
+| [`afara inject`](inject.md) | Write this repository's patterns into your AI tool's instruction file (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`). |
 | [`/copy`, `/mouse`, `/exit`](shell.md#shell-only-commands-copy-mouse-exit) | Commands that only work inside the shell. |
 
 ## Topics
@@ -69,6 +71,7 @@ Setting up a repository once:
 afara auth login     # sign in and choose an AI model
 cd your-repository
 afara init           # install the pre-push hook and set the baseline
+afara inject         # optional: give your AI tool the company's architecture patterns
 ```
 
 Then, for each feature you work on:
@@ -84,6 +87,8 @@ afara compare "card payment"              # find where the story and the build d
 
 git push                                  # the pre-push hook lets it through
 ```
+
+Run `generate` for the same feature again after more commits: it reads the feature's earlier commits along with the new ones, so the wireframe always covers the whole feature. `push` and `compare` work on the branch you are on, which must be tracked by the project (see [Branches](compare.md#branches)).
 
 After the first `generate`, the feature becomes the *current feature* for this repository, so `link` and `push` need no `--feature` unless you switch to another one.
 

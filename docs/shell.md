@@ -43,14 +43,18 @@ By default the mouse belongs to your terminal, so you can highlight and copy tex
 | `/push` | `afara push` | Pushes the current feature. |
 | `/push <feature>` | `afara push "<feature>"` | |
 | `/compare <feature>` | `afara compare "<feature>"` | The feature name is required. |
+| `/patterns` | `afara patterns` | Lists the patterns for this repository. Flags work too: `/patterns --all`, `/patterns --level service`. |
+| `/inject` | `afara inject` | Flags work too: `/inject --all-tools`, `/inject --remove`. |
 | `/init` | `afara init` | |
-| `/model` | `afara model` | Lists the available models. |
-| `/model <id>` | `afara model <id>` | |
+| `/model` | `afara model` | Lists the installed AI tools. |
+| `/model <tool>` | `afara model <tool>` | |
+| `/model --backend` | `afara model --backend` | Lists the backend's models. |
+| `/model --backend <id>` | `afara model --backend <id>` | |
 | `/copy` | | Copies the last answer to the clipboard. |
 | `/mouse` | | Switches between text selection and wheel scrolling. |
 | `/exit` | | Leaves the shell. |
 
-Everything typed after the command name is passed as a single value, so spaces are safe: `/generate card payment with 3-D Secure` documents the feature `card payment with 3-D Secure`. Picking a command from the palette fills it in for you.
+Everything typed after the command name is passed as a single value, so spaces are safe: `/generate card payment with 3-D Secure` documents the feature `card payment with 3-D Secure`. The exception is a value that starts with `-`: it is split into words as your shell would split it, so flags work (`/model --backend claude-opus-5`, `/patterns --level service`). Picking a command from the palette fills it in for you.
 
 Only one thing runs at a time. While an answer is streaming or a command is running, new input waits until it finishes, or until you cancel it with `Esc`.
 

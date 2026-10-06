@@ -3,7 +3,7 @@
 Compares a feature's linked ticket with its pushed code wireframe, prints what differs, and saves the result to the dashboard.
 
 ```sh
-afara compare "<feature>" [--fail-on <kind>] [--tool <tool>]
+afara compare "<feature>" [--fail-on <kind>] [--tool <tool>] [--branch <name>]
 ```
 
 **Arguments and flags:**
@@ -13,7 +13,8 @@ afara compare "<feature>" [--fail-on <kind>] [--tool <tool>]
 | `feature` | **Required.** The feature to compare, as an argument or with `--feature`. |
 | `-f`, `--feature <name>` | The feature name, instead of the argument. |
 | `--fail-on <kind>` | Exit with a non-zero status while open findings of this kind exist: `extra`, `missing`, `reordered` or `any`. For CI. |
-| `--tool <tool>` | The local AI tool to use: `claude`, `codex` or `gemini`. Defaults to the first one installed. |
+| `--tool <tool>` | The local AI tool to use for this run: `claude`, `codex` or `gemini`. Defaults to the one chosen with [`afara model`](model.md), or else the first one installed. |
+| `--branch <name>` | The branch to compare on. Defaults to the checked-out branch. See [Branches](#branches). |
 
 **Examples:**
 
@@ -21,15 +22,35 @@ afara compare "<feature>" [--fail-on <kind>] [--tool <tool>]
 afara compare "card payment"
 afara compare "card payment" --fail-on extra
 afara compare "card payment" --fail-on any --tool gemini
+afara compare "card payment" --branch main
 ```
 
 ## What it needs
 
-- The feature has been **pushed** (`afara push`).
+- The branch is **tracked** by the project (see [Branches](#branches)).
+- The feature has been **pushed** to this branch (`afara push`).
 - The feature has a **ticket linked** (`afara link`).
 - An AI coding tool installed, as for `generate`.
 
 If any of these is missing, `compare` stops and tells you which command to run.
+
+## Branches
+
+Features are kept per branch: the same feature can have a different wireframe and different findings on `main` and on a feature branch. `push` and `compare` work on:
+
+1. the branch named with `--branch`, else
+2. the checked-out branch, else
+3. on a detached `HEAD` (usual in CI), the branch CI names in `GITHUB_HEAD_REF` (a pull request's source branch) or `GITHUB_REF_NAME`.
+
+If none of these gives a branch, the command stops: `can't tell which branch this is: HEAD is detached. Pass --branch <name>`.
+
+The branch must be **tracked** by the project. Owners choose which branches are tracked in the dashboard, under **Settings → Branches**; pushing never starts tracking a branch on its own. On a branch that is not tracked, the command stops before anything is uploaded or any AI work starts:
+
+```
+feature/card-payment isn't tracked by Shop (3 of 3 branches on the Free plan). Track it in the dashboard (Settings → Branches), or switch branch
+```
+
+The number of tracked branches is limited by your plan, as the message shows.
 
 ## What happens
 
@@ -42,6 +63,8 @@ If any of these is missing, `compare` stops and tells you which command to run.
 ## Reading the output
 
 ```
+Shop · feature/card-payment · 0113454
+
 card-payment: story 3f9a0c1b2d4e vs code 0113454
 
 Extra: built but not in the story (1)
@@ -69,7 +92,7 @@ Couldn't match these (1). A limit of the matcher, not a defect:
 Saved. https://app-beta.afara.dev/p/shop/f/card-payment
 ```
 
-The first line names the ticket revision and the commit that were compared. Then, in order:
+The first line names the project, branch and pushed commit the run is about. The next names the ticket revision and the commit that were compared. Then, in order:
 
 | Section | Meaning |
 | --- | --- |
