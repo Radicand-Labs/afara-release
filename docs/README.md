@@ -18,7 +18,6 @@ This documentation covers every command in the `afara` CLI: what it does, the op
 | [`afara compare`](compare.md) | Find where the ticket and the build disagree. |
 | [`afara patterns`](patterns.md) | List your company's architecture patterns and the repositories they apply to. |
 | [`afara inject`](inject.md) | Write this repository's patterns into your AI tool's instruction file (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`). |
-| [`/copy`, `/mouse`, `/exit`](shell.md#shell-only-commands-copy-mouse-exit) | Commands that only work inside the shell. |
 
 ## Topics
 
