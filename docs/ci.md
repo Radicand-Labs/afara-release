@@ -19,6 +19,12 @@ A typical CI check that fails a build when the code contains behaviour the ticke
 afara compare "card payment" --fail-on extra
 ```
 
+To generate, push, link and compare in the same job, use [`afara ship`](ship.md). The ticket must come from `--issue`, an earlier link or the branch name:
+
+```sh
+afara ship "card payment" --issue PAY-981 --fail-on extra
+```
+
 ## What CI needs
 
 - A signed-in credential in `~/.config/afara/credentials` (or under `$XDG_CONFIG_HOME/afara/`).

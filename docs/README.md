@@ -16,6 +16,7 @@ This documentation covers every command in the `afara` CLI: what it does, the op
 | [`afara link`](link.md) | Attach the Jira, Linear or GitHub ticket that describes a feature. |
 | [`afara push`](push.md) | Publish a generated wireframe to the dashboard. |
 | [`afara compare`](compare.md) | Find where the ticket and the build disagree. |
+| [`afara ship`](ship.md) | Generate, push, link and compare a feature in one go. |
 | [`afara patterns`](patterns.md) | List your company's architecture patterns and the repositories they apply to. |
 | [`afara inject`](inject.md) | Write this repository's patterns into your AI tool's instruction file (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`). |
 
@@ -85,6 +86,12 @@ afara push                                # publish the code wireframe to the da
 afara compare "card payment"              # find where the story and the build differ
 
 git push                                  # the pre-push hook lets it through
+```
+
+Or run the four feature steps with one command, which stops at the first that fails:
+
+```sh
+afara ship "card payment"                 # generate, push, link (PAY-981, from the branch) and compare
 ```
 
 Run `generate` for the same feature again after more commits: it reads the feature's earlier commits along with the new ones, so the wireframe always covers the whole feature. `push` and `compare` work on the branch you are on, which must be tracked by the project (see [Branches](compare.md#branches)).

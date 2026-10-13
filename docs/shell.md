@@ -43,6 +43,7 @@ The mouse always belongs to your terminal, so you can highlight and copy text as
 | `/push` | `afara push` | Pushes the current feature. |
 | `/push <feature>` | `afara push "<feature>"` | |
 | `/compare <feature>` | `afara compare "<feature>"` | The feature name is required. |
+| `/ship <feature>` | `afara ship "<feature>"` | Asks which commits first, like `/generate`. There is no ticket list in the shell: see [In the interactive shell](ship.md#in-the-interactive-shell). |
 | `/patterns` | `afara patterns` | Lists the patterns for this repository. Flags work too: `/patterns --all`, `/patterns --level service`. |
 | `/inject` | `afara inject` | Flags work too: `/inject --all-tools`, `/inject --remove`. |
 | `/init` | `afara init` | |
