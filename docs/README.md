@@ -17,7 +17,7 @@ This documentation covers every command in the `afara` CLI: what it does, the op
 | [`afara push`](push.md) | Publish a generated wireframe to the dashboard. |
 | [`afara compare`](compare.md) | Find where the ticket and the build disagree. |
 | [`afara ship`](ship.md) | Generate, push, link and compare a feature in one go. |
-| [`afara layers`](layers.md) | See which layer of the product a project is, and link the projects that are its frontend, backend, mobile app and so on. |
+| [`afara layers`](layers.md) | See which layer of the product a project is, link the projects that are its frontend, backend, mobile app and so on, and write down what a linked layer expects of this one. |
 | [`afara patterns`](patterns.md) | List your company's architecture patterns and the repositories they apply to. |
 | [`afara inject`](inject.md) | Write this repository's patterns into your AI tool's instruction file (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`). |
 

@@ -48,6 +48,7 @@ The mouse always belongs to your terminal, so you can highlight and copy text as
 | `/layers list` | `afara layers list` | Flags work too: `/layers list --layer frontend`. |
 | `/layers link <layer> <project>` | `afara layers link <layer> <project>` | Without a project, prints the choices instead of asking. |
 | `/layers unlink <layer>` | `afara layers unlink <layer>` | |
+| `/layers context <feature>` | `afara layers context "<feature>"` | Flags work after the feature name: `/layers context card payment --from frontend`. |
 | `/patterns` | `afara patterns` | Lists the patterns for this repository. Flags work too: `/patterns --all`, `/patterns --level service`. |
 | `/inject` | `afara inject` | Flags work too: `/inject --all-tools`, `/inject --remove`. |
 | `/init` | `afara init` | |
