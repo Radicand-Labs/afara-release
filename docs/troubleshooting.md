@@ -2,8 +2,8 @@
 
 | Message | What to do |
 | --- | --- |
-| `not signed in. Run afara auth login first` | Run `afara auth login`. |
-| `Afara rejected the saved key. Run afara auth login to sign in again` | Your key has expired or been revoked. Sign in again. |
+| `not signed in. Run afara login first` | Run `afara login`. |
+| `Afara rejected the saved key. Run afara login to sign in again` | Your key has expired or been revoked. Sign in again. |
 | `not inside a git repository` | Run the command from inside the repository the feature lives in. |
 | `this repository has no origin remote` | Add a GitHub `origin` remote. Afara uses it to find the project. |
 | `no Afara project for owner/name` | Create the project in the dashboard (**Projects → New project**) for that repository. |
@@ -31,7 +31,7 @@
 | `ticket … could not be found; it may have been deleted or moved` | Link the current ticket with `afara link`. |
 | `The story is too thin to compare` | Add the screens the user sees, what they do, and what happens on success and failure to the ticket, then run `compare` again. |
 | `Could not reach the clipboard` | On Linux, install `xclip` or `xsel`. |
-| `Sign-in … timed out` | Finish signing in within 2 minutes, or run `afara auth login` again. |
+| `Sign-in … timed out` | Finish signing in within 2 minutes, or run `afara login` again. |
 | A push is blocked and you need it through now | `git push --no-verify` skips the check once. |
 
 ---

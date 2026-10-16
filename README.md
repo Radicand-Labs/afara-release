@@ -62,7 +62,7 @@ Download the archive for your platform from [Releases](https://github.com/Radica
 ## Get started
 
 ```sh
-afara auth login      # sign in; also asks which AI model the backend should use
+afara login           # sign in; also asks which AI model the backend should use
 cd your-repository
 afara init            # pre-push hook, and a baseline for the history before Afara
 afara                 # the interactive shell

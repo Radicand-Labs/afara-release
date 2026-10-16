@@ -9,7 +9,7 @@ This documentation covers every command in the `afara` CLI: what it does, the op
 | Command | What it does |
 | --- | --- |
 | [`afara`](shell.md) | Open the interactive shell: ask questions, and run any command as a slash command. |
-| [`afara auth login`](auth-login.md) | Sign in through your browser. |
+| [`afara login`](login.md) | Sign in through your browser. |
 | [`afara model`](model.md) | Choose the AI tool `generate` and `compare` run, or the backend's AI model. |
 | [`afara init`](init.md) | Set a repository up: install the pre-push hook and set the baseline. |
 | [`afara generate`](generate.md) | Build a feature's code wireframe from your new commits, on your machine. |
@@ -69,7 +69,7 @@ You need:
 Setting up a repository once:
 
 ```sh
-afara auth login     # sign in and choose an AI model
+afara login          # sign in and choose an AI model
 cd your-repository
 afara init           # install the pre-push hook and set the baseline
 afara inject         # optional: give your AI tool the company's architecture patterns

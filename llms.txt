@@ -1,0 +1,50 @@
+# Afara CLI
+
+> Afara turns the code you actually shipped into context every other team can work from, and flags when the user story stops matching the build. The `afara` CLI maps a feature's commits into a code wireframe (a flow graph of screens, steps and API endpoints, each citing its file and lines), reads the feature's Jira, Linear or GitHub ticket into a story wireframe, and reports where the two disagree.
+
+Key facts:
+
+- Afara reads commits, never the working tree. Uncommitted changes are never sent anywhere.
+- Code is read on the user's machine by an AI coding tool they already have installed (Claude Code, Codex CLI or Gemini CLI), in a temporary read-only checkout. Source code is not uploaded; only the resulting wireframe is published, and only on `afara push`.
+- A repository needs an `origin` remote on GitHub and a matching Afara project, created in the dashboard.
+- Every command also runs inside the interactive shell (`afara`) as a slash command, such as `/generate card payment`.
+- Features are kept per branch, and `push` and `compare` only work on branches the project tracks (dashboard, Settings → Branches).
+
+Typical workflow:
+
+```sh
+afara login                               # sign in and choose an AI model
+afara init                                # install the pre-push hook and set the baseline
+afara generate --feature "card payment"   # map the feature from new commits
+afara link --issue PAY-981                # attach the ticket
+afara push                                # publish the code wireframe
+afara compare "card payment"              # find where story and build differ
+afara ship "card payment"                 # or: all four steps in one command
+```
+
+## Docs
+
+- [Overview](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/README.md): How Afara works, what you need before you start, the everyday workflow, and how commands run.
+- [Install](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/README.md): Installing the CLI and getting started.
+
+## Commands
+
+- [afara (interactive shell)](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/shell.md): The command palette, its keys, every slash command, and asking questions about Afara, answered locally from the docs and the CLI's help.
+- [afara login](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/login.md): Sign in through the browser and choose the backend's AI model. Replaces `afara auth login`, which still works.
+- [afara model](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/model.md): Choose the local AI tool `generate` and `compare` run, or the backend's AI model.
+- [afara init](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/init.md): Set a repository up: install the pre-push hook and set the baseline.
+- [afara generate](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/generate.md): Build a feature's code wireframe from new commits, on your machine. Covers which commits and files are read, the commit picker, and `--existing`.
+- [afara link](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/link.md): Attach the Jira, Linear or GitHub ticket that describes a feature.
+- [afara push](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/push.md): Publish a generated wireframe to the dashboard.
+- [afara compare](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/compare.md): Find where the ticket and the build disagree. Covers branches, reading the output, and `--fail-on`.
+- [afara ship](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/ship.md): Run generate, push, link and compare for one feature in one command.
+- [afara layers](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/layers.md): Link the projects that are a product's frontend, backend, mobile app and so on, and use `afara layers context` to write what a linked layer expects of this one.
+- [afara patterns](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/patterns.md): List the company's architecture patterns and the repositories they apply to.
+- [afara inject](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/inject.md): Write this repository's patterns into the AI tool's instruction file (`CLAUDE.md`, `AGENTS.md`, `GEMINI.md`).
+
+## Topics
+
+- [The pre-push hook](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/pre-push-hook.md): How pushes wait for Afara, which branches are checked, and how to skip it.
+- [Using Afara in CI](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/ci.md): Running without a terminal, and failing builds on divergences.
+- [Configuration and files](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/configuration.md): Environment variables, and every file Afara keeps.
+- [Troubleshooting](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/docs/troubleshooting.md): Error messages and what to do about them.

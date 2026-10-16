@@ -69,7 +69,7 @@ Service patterns (1)
 
 - `afara patterns` only reads. Patterns are created, edited and assigned to repositories by owners in the dashboard.
 - To have your AI coding tool follow these patterns while it writes code, run [`afara inject`](inject.md).
-- You must be signed in. Without a sign-in it stops with ``not signed in. Run `afara auth login` first``.
+- You must be signed in. Without a sign-in it stops with ``not signed in. Run `afara login` first``.
 - In the interactive shell, `/patterns` takes the same flags: `/patterns --all`, `/patterns --level service`.
 
 ---

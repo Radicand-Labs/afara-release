@@ -3,7 +3,7 @@
 Chooses the AI that does Afara's work. There are two choices, made separately:
 
 - **The AI tool** on your machine that `generate`, `compare` and `inject` use: Claude Code, Codex CLI or Gemini CLI. This is what `afara model` chooses.
-- **The backend model** the Afara backend runs for questions in the shell and for reading tickets in `link`. This is what `afara model --backend` chooses.
+- **The backend model** the Afara backend runs for reading tickets in `link`. This is what `afara model --backend` chooses.
 
 ```sh
 afara model                    # choose the AI tool from a list
@@ -57,7 +57,7 @@ The models you see depend on what the backend offers.
 - **Without an ID, in a terminal**, Afara shows the numbered list and asks. Enter the number or the ID. Pressing `Enter` with nothing typed keeps your current model, or takes the backend's default if you have none.
 - **Without an ID, outside a terminal** (and with `/model --backend` in the shell), Afara lists the models and tells you how to set one.
 
-The choice is saved in `~/.config/afara/model`. `afara auth login` asks for it after you sign in. If none has been chosen yet, the first command that needs one asks in a terminal, or uses the backend's default and says so (``No AI model chosen; using …. Change it with `afara model --backend`.``).
+The choice is saved in `~/.config/afara/model`. `afara login` asks for it after you sign in. If none has been chosen yet, the first command that needs one asks in a terminal, or uses the backend's default and says so (``No AI model chosen; using …. Change it with `afara model --backend`.``).
 
 ---
 
