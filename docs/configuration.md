@@ -8,7 +8,7 @@ Everything is optional. A fresh install needs no configuration.
 | --- | --- | --- |
 | `AFARA_WEB_URL` | `https://app-beta.afara.dev` | The dashboard. Sign-in opens here, and printed links point here. |
 | `AFARA_API_URL` | `https://api-beta.afara.dev` | The backend the CLI calls. |
-| `AFARA_DOC_URL` | none | The Afara documentation page the shell answers questions from: markdown, plain text or HTML, up to a size limit. Without it, questions are answered from the CLI's own help only. See [Asking questions](shell.md#asking-questions). |
+| `AFARA_DOC_URL` | This documentation's [`llms.txt`](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/llms.txt) | The Afara documentation the shell answers questions from. Either one page of markdown, plain text or HTML, or an index in the llms.txt style, whose linked `.md` and `.txt` pages are loaded with it (up to 100 pages and 8 MB in all). See [Asking questions](shell.md#asking-questions). |
 | `XDG_CONFIG_HOME` | `~/.config` | Where Afara keeps its per-user files. |
 
 Values are read from the environment first, then from a `.env` file in the current directory if there is one, then the built-in defaults.

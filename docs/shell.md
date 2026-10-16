@@ -18,7 +18,7 @@ Anything typed that is not a slash command is a question about Afara. Questions 
 How a question is answered:
 
 1. Afara finds your local AI tool, the same one `generate` uses (Claude Code, Codex CLI or Gemini CLI).
-2. The first time you ask in a session, Afara loads the documentation page at `AFARA_DOC_URL`. Markdown, plain text and HTML all work. HTML is reduced to its text.
+2. The first time you ask in a session, Afara loads the Afara documentation: this documentation's `llms.txt` and every page it links to, unless `AFARA_DOC_URL` names another source.
 3. Afara builds a command reference from the CLI's own help: every command with its description, usage, examples and flags. Answers about commands and flags always match the version you have installed.
 4. The tool runs read-only in a temporary folder that holds only those two files. It answers from them alone, and says so when they don't cover the question. It never invents commands, flags or features.
 5. Follow-up questions include the conversation so far.
@@ -31,7 +31,7 @@ Answers are plain text. Each one starts with a one- or two-sentence answer. A ho
 - **Notes:** anything else you need to know, when there is something.
 - **From:** the documentation section or command the answer came from.
 
-**Where the documentation comes from.** Set `AFARA_DOC_URL` to one page holding the Afara documentation (see [Configuration](configuration.md#environment-variables)). Without it, answers come from the CLI's own help only, and the shell says so the first time you ask. If the page can't be loaded, that answer also uses the CLI's help only, and the next question tries the page again.
+**Where the documentation comes from.** By default, Afara loads this documentation's [`llms.txt`](https://raw.githubusercontent.com/Radicand-Labs/afara-release/main/llms.txt) together with every page it links to. To use other documentation, set `AFARA_DOC_URL` (see [Configuration](configuration.md#environment-variables)). If the documentation can't be loaded, that answer comes from the CLI's own help only, and the next question tries again. A linked page that won't load is left out, and the rest are still used.
 
 ## Keys
 
