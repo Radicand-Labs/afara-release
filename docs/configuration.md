@@ -20,10 +20,11 @@ Values are read from the environment first, then from a `.env` file in the curre
 | `~/.config/afara/tool` | The local AI tool you chose with `afara model` for `generate`, `compare` and `inject`. |
 | `~/.config/afara/model` | The ID of the backend model you chose with `afara model --backend`. |
 | `~/.config/afara/session` | A random identifier for this installation. |
-| `<repo>/.git/afara/state.json` | Per-clone state: feature names and IDs, the current feature, linked tickets, the commits already generated, and the baseline. |
+| `<repo>/.git/afara/state.json` | Per-clone state: feature names and IDs, the current feature, linked tickets, the commits already generated, the baseline, and where each local context file came from. |
 | `<repo>/.git/afara/features/<id>.json` | The last generated wireframe for each feature, kept until it is pushed (and after). |
 | `<repo>/.git/hooks/pre-push` | The hook `afara init` installs. |
-| `<repo>/.afara/context/<id>.<layer>.md` | Written by [`afara layers context`](layers.md#afara-layers-context): what a linked layer expects of this project. These are meant to be committed. |
+| `<repo>/.afara/context/<id>.<layer>.md` | Written by [`afara layers context`](layers.md#afara-layers-context): what a linked layer expects of this project. A local working file, kept out of git through `.git/info/exclude`. `--clear` removes it. |
+| `<repo>/CLAUDE.local.md` (or `AGENTS.md`, `GEMINI.md`) | `afara layers context` adds a marked block here that points your AI tool at the context files. `--clear` removes it. See [Keeping it local](layers.md#keeping-it-local). |
 | `<repo>/CLAUDE.md`, `AGENTS.md`, `GEMINI.md` | Written by `afara inject`: the architecture patterns for your AI tool, in a marked block. These are meant to be committed. |
 
 Per-repository state lives inside `.git`, so it can never be committed by accident. The instruction files `afara inject` writes are the exception: they live in the working tree, so they can be shared.
